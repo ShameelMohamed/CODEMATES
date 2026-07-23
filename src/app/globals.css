@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+/* ── Design tokens ──────────────────────────────────────────────────────────*/
+@theme {
+  --color-void-black:   #0B0F19;
+  --color-void-surface: #0d1117;
+  --color-void-border:  rgba(255, 255, 255, 0.06);
+  --color-neon-blue:    #38bdf8;  /* sky-400 — "host" color */
+  --color-neon-purple:  #8b5cf6;  /* violet-500 */
+  --color-neon-pink:    #f472b6;  /* pink-400 — "guest" color */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────────*/
+:root {
+  background-color: var(--color-void-black);
+  color: white;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Global selection colour ────────────────────────────────────────────────*/
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: white;
+}
+
+/* ── Glassmorphism panel ────────────────────────────────────────────────────*/
+.glass-panel {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(32px) saturate(120%);
+  -webkit-backdrop-filter: blur(32px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1.5rem;
+  box-shadow:
+    0 8px 32px -8px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+}
+
+/* ── Gradient text ──────────────────────────────────────────────────────────*/
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-neon-blue), var(--color-neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Primary button ─────────────────────────────────────────────────────────*/
+.btn-primary {
+  background: linear-gradient(135deg, #5865F2 0%, #7c3aed 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition:
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.15s ease;
+  box-shadow: 0 4px 18px -4px rgba(88, 101, 242, 0.4);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 28px -4px rgba(88, 101, 242, 0.55);
+}
+
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: saturate(0.6);
+}
+
+/* ── Font mono utility ──────────────────────────────────────────────────────*/
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ── Scrollbar styling ──────────────────────────────────────────────────────*/
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ── Monaco editor host colours ─────────────────────────────────────────────*/
+.monaco-editor .margin {
+  background: transparent !important;
+}
+
+/* ── Focus ring for accessible keyboard navigation ──────────────────────────*/
+:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.5);
+  outline-offset: 2px;
+}
+
+/* ── Input placeholder consistency ──────────────────────────────────────────*/
+::placeholder {
+  color: rgba(148, 163, 184, 0.3);
+}
